@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>文档标题</title>
+</head>
+ 
+<body>
+<button onclick="open_console_1()">开启后门(VConsole)</button><br>
+<button onclick="open_console_2()">开启后门(默认)</button><br>
+<button onclick="close_console()">关闭后门</button><br><br>
+
+<button onclick="click_open()">开启打印</button><br>
+
+</body>
+<script src="./vconsole.min.js" id="vConsoleLog"></script>
+<script src="./backdoor.js"></script>
+<script>
+var window_interval = null;
+window.onload = function(){
+    console_init();
+    console.log('start');
+}
+
+//可以设置在10s内，点击10次，就开启
+function open_console_1(){
+    sessionStorage.setItem('backdoor','1');
+    console_init();
+}
+
+function open_console_2(){
+    sessionStorage.setItem('backdoor','2');
+    console_init();
+}
+
+function close_console(){
+    sessionStorage.removeItem('backdoor');
+}
+
+function click_open(){
+    if(window_interval == null){
+        window_interval = setInterval(function(){
+            console.log('测试');
+            console.log(['ce','shi']);
+            console.log({'a':'b'});
+        },1000);
+    }
+}
+</script>
+</html>

@@ -1,2 +1,2 @@
 # VConsole_backdoor
-基于vConsole的程序后门调试
+基于vConsole的程序后门调试。主要用于WebApp或者移动端Web开发调试或者后门调试
